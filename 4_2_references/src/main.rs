@@ -42,11 +42,21 @@ fn main() {
     change(&mut s);
     println!("{}", s);
 
-    // ダメ.可変参照は1回まで
+    // ダメ！.参照は1度までしかできない！！
     // let r1 = &mut s;
     // let r2 = &mut s;
+
+    // 参照を返すことはできない
+    // let reference_to_nothing = dangle();
 }
 
 fn change(some_string: &mut String) {
     some_string.push_str(", world");
 }
+
+// fn dangle() -> &String {
+//     //dangleはStringへの参照を返す
+//     let s = String::from("hello"); //sは新しいString
+
+//     &s //String sへの参照を返す
+// } //ここでsはスコープを抜け、ドロップされる。そのメモリは消される
